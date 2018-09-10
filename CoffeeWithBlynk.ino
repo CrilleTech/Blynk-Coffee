@@ -21,7 +21,7 @@
 #include "Timer.h"
 
 
-char auth[] = "authorization key from blynk cloud";
+char auth[] = "authorizationkey from blynk cloud";
 
 char ssid[] = "SSID";
 char pass[] = "password";
@@ -33,15 +33,15 @@ int pinLed = 12;
 
 void setup()
 {
- 
+  //Define used pins
   pinMode(pinCoffee, OUTPUT); 
   pinMode(pinLed, OUTPUT); 
   
   Serial.begin(115200);
-  Blynk.begin(auth, ssid, pass);
+  Blynk.begin(auth, ssid, pass);  //start blynk. 
 }
-
-// Using the virtual pins is not a necessity with simple project, but can be useful in th efututre if one would want to add an screen or similar. 
+. 
+// Using the virtual pins is not a necessity with this simple project, but it can sometimes be useful to be able to write to the MCU 
 BLYNK_WRITE(V1)
 {
   int pinValue = param.asInt(); // assigning incoming value from pin V1 to a variable
@@ -60,7 +60,7 @@ BLYNK_WRITE(V1)
 
 void loop()
 {
-  Blynk.run();  //  This is all you actually need 
+  Blynk.run();   
   if(Blynk.run()) //a led to indicate that Blynk is running. 
   {
      digitalWrite(pinLed, HIGH);
